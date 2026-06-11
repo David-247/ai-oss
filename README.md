@@ -1,61 +1,58 @@
 # AI-OSS.net
 
-Open research-coordination platform for independent AI researchers,
+An open research-coordination platform for independent AI researchers,
 open-source AI developers, safety researchers, and evaluators — a public,
-community-run research lab (forum + arXiv-style archive + realtime rooms +
-moderation + governance + donations).
+community-run research lab combining forum-style discussion, an arXiv-style
+research archive, realtime text and voice rooms, community moderation,
+governance, and donations.
 
-> **Controlling spec:** [`docs/architecture/AI_OSS_ARCHITECTURE_SOURCE_OF_TRUTH.md`](docs/architecture/AI_OSS_ARCHITECTURE_SOURCE_OF_TRUTH.md).
-> All work traces back to it — see [traceability](docs/architecture/traceability.md).
+Production: **https://www.ai-oss.net/**
 
-## Status
+## Tech stack
 
-**Phase 00 — Foundation, Platform & Project Setup.** This repo scaffolds the
-monorepo, the Next.js app (placeholder landing), `/api/*` 501 stubs, the
-apex→www 308 redirect, CI/supply-chain gates, and architecture docs. Live
-infrastructure (Vercel project, domain, Supabase/LiveKit/Stripe accounts) is
-provisioned via [the runbook](docs/runbooks/provisioning.md).
+- **Next.js** (App Router) + **React** + **TypeScript**
+- **Tailwind CSS**
+- **Supabase** (Postgres, Auth, Realtime, Storage)
+- **pnpm** workspaces + **Turborepo**
+- Deployed on **Vercel**
 
-## Repository layout (§5.1)
+## Repository layout
 
 ```
-apps/web/            # Next.js App Router app (React + TS + Tailwind)
-packages/db/         # schema, SQL migrations, typed DB access     (P01)
-packages/auth/       # Supabase auth wrappers, session helpers     (P03)
-packages/permissions/# RBAC/ABAC policy engine
-packages/moderation/ # AutoMod engine + safety classifiers
-packages/search/     # FTS + vector search helpers
-packages/design-system/ # Tailwind config, shadcn/radix components (P05)
-packages/shared/     # Zod schemas, constants, utilities
-supabase/            # migrations / policies / seed                (P01)
-docs/                # architecture / policies / runbooks / admin / moderation
-tests/               # e2e / integration / security / rls
+apps/web/                 # Next.js application
+packages/db/              # database schema, migrations, typed access
+packages/auth/            # auth wrappers & session helpers
+packages/permissions/     # RBAC/ABAC policy engine
+packages/moderation/      # automoderation engine & safety classifiers
+packages/search/          # full-text & vector search helpers
+packages/design-system/   # Tailwind config & shared UI components
+packages/shared/          # shared schemas, constants, utilities
+supabase/                 # migrations / policies / seed
+tests/                    # e2e / integration / security / rls
 ```
 
-## Prerequisites
+## Getting started
 
-- Node `>= 22` (see `.nvmrc`)
-- pnpm `>= 9` (`corepack enable && corepack prepare pnpm@9 --activate`)
-
-## Commands
+Requirements: **Node ≥ 22**, **pnpm ≥ 9** (`corepack enable`).
 
 ```bash
-pnpm install        # install workspace deps
+pnpm install        # install workspace dependencies
 pnpm dev            # run the web app locally
-pnpm lint           # eslint across the workspace
-pnpm typecheck      # tsc --noEmit across the workspace
-pnpm test           # vitest (integration + security suites)
-pnpm build          # turbo build (incl. next build)
+pnpm lint           # lint the workspace
+pnpm typecheck      # type-check the workspace
+pnpm test           # run the test suites
+pnpm build          # production build
 ```
 
-## Environment
-
-Copy [`.env.example`](.env.example) to `.env.local` and fill values from the
-[provisioning runbook](docs/runbooks/provisioning.md). Secrets must never carry
-the `NEXT_PUBLIC_` prefix — enforced by `tests/security/env-hygiene.test.ts`.
+Copy [`.env.example`](.env.example) to `.env.local` and fill in your own
+values. Variables prefixed `NEXT_PUBLIC_` are exposed to the browser — never
+put secrets behind that prefix.
 
 ## Contributing
 
-PRs must reference the requirement ID(s) / architecture section they satisfy
-(see the [PR template](.github/pull_request_template.md)) and pass CI
-(lint, typecheck, test, build, secret-scan, SAST, license-scan).
+Pull requests run CI (lint, type-check, tests, build, secret scanning, SAST,
+and license checks) and require review before merging to `main`.
+
+## License
+
+[MIT](LICENSE)

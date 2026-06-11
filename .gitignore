@@ -1,47 +1,44 @@
-# vibeless-managed
-.codex/config.toml
-# vibeless-managed
-.codex/hooks.json
-# vibeless-managed
-.cursor/mcp.json
-# vibeless-managed
-.mcp.json
-# vibeless-managed
-.claude/settings.json
-# vibeless-managed
-.vibeless/hooks/
-
-# --- Node / pnpm ---
+# Dependencies
 node_modules/
 .pnpm-store/
 
-# --- Build outputs ---
+# Build output
 .next/
 out/
 dist/
 build/
 *.tsbuildinfo
+next-env.d.ts
 
-# --- Turbo ---
+# Turborepo
 .turbo/
 
-# --- Test / coverage ---
+# Testing
 coverage/
 test-results/
 playwright-report/
 
-# --- Env & secrets (NEVER commit real secrets) ---
+# Environment & secrets (never commit real values)
 .env
 .env.*
 !.env.example
 .vercel/
 
-# --- Editor / OS ---
-.DS_Store
-*.log
-
-# Local agent scratch
+# Editors / IDEs / local tooling
+.idea/
+.vscode/
+*.swp
+.cursor/
 .claude/
+.codex/
+.vibeless/
+.mcp.json
 
-# Next.js generated
-next-env.d.ts
+# Internal planning & design docs (kept local, not published)
+docs/
+phases/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
