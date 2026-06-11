@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ai-oss/db": ["packages/db/src/index.ts"],
+      "@ai-oss/auth": ["packages/auth/src/index.ts"],
+      "@ai-oss/permissions": ["packages/permissions/src/index.ts"],
+      "@ai-oss/moderation": ["packages/moderation/src/index.ts"],
+      "@ai-oss/search": ["packages/search/src/index.ts"],
+      "@ai-oss/design-system": ["packages/design-system/src/index.ts"],
+      "@ai-oss/shared": ["packages/shared/src/index.ts"]
+    }
+  }
+}
