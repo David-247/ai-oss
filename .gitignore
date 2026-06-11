@@ -1,0 +1,41 @@
+# vibeless-managed
+.codex/config.toml
+# vibeless-managed
+.codex/hooks.json
+# vibeless-managed
+.cursor/mcp.json
+# vibeless-managed
+.mcp.json
+# vibeless-managed
+.claude/settings.json
+# vibeless-managed
+.vibeless/hooks/
+
+# --- Node / pnpm ---
+node_modules/
+.pnpm-store/
+
+# --- Build outputs ---
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# --- Turbo ---
+.turbo/
+
+# --- Test / coverage ---
+coverage/
+test-results/
+playwright-report/
+
+# --- Env & secrets (NEVER commit real secrets) ---
+.env
+.env.*
+!.env.example
+.vercel/
+
+# --- Editor / OS ---
+.DS_Store
+*.log
