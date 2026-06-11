@@ -9,11 +9,8 @@
 - [ ] Require a pull request before merging; **require ≥1 approving review**.
 - [ ] Dismiss stale approvals on new commits.
 - [ ] **Require status checks to pass** before merging, and require branches to
-      be up to date. Required checks (from `ci.yml`):
-  - `lint`
-  - `typecheck`
-  - `test`
-  - `build`
+      be up to date. Required check contexts (job names from `ci.yml`):
+  - `lint / typecheck / test / build`
   - `secret-scan`
   - `sast`
   - `license-scan`
