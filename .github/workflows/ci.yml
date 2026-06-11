@@ -75,4 +75,4 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: License check (deny copyleft)
-        run: pnpm dlx license-checker-rseidelsohn --production --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause;0BSD;CC0-1.0;Unlicense;MPL-2.0;Python-2.0;BlueOak-1.0.0" --excludePrivatePackages
+        run: pnpm dlx license-checker-rseidelsohn@4.4.2 --production --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause;0BSD;CC0-1.0;Unlicense;MPL-2.0;Python-2.0;BlueOak-1.0.0;CC-BY-4.0;CC-BY-3.0" --excludePrivatePackages

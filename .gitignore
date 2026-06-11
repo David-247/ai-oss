@@ -42,3 +42,6 @@ playwright-report/
 
 # Local agent scratch
 .claude/
+
+# Next.js generated
+next-env.d.ts
