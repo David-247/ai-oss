@@ -1,19 +1,18 @@
-// §5.3 — 'workflows' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { NextResponse } from "next/server";
+import { dispatchJobRequest, listJobs } from "@/lib/jobs";
+
+export const runtime = "nodejs";
 
 export function GET() {
-  return notImplemented("workflows");
+  return NextResponse.json(
+    {
+      group: "workflows",
+      jobs: listJobs().filter((job) => job.runtime === "workflow" || job.runtime === "queue"),
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
-export function POST() {
-  return notImplemented("workflows");
-}
-export function PUT() {
-  return notImplemented("workflows");
-}
-export function PATCH() {
-  return notImplemented("workflows");
-}
-export function DELETE() {
-  return notImplemented("workflows");
+
+export async function POST(request: Request) {
+  return dispatchJobRequest(request, "workflow");
 }

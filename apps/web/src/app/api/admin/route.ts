@@ -1,19 +1,19 @@
-// §5.3 — 'admin' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { handleAdminAction, handleAdminGet } from "@/lib/admin-server";
 
-export function GET() {
-  return notImplemented("admin");
+export const runtime = "nodejs";
+
+export function GET(request: Request) {
+  return handleAdminGet(request);
 }
-export function POST() {
-  return notImplemented("admin");
+
+export function POST(request: Request) {
+  return handleAdminAction(request);
 }
-export function PUT() {
-  return notImplemented("admin");
+
+export function PATCH(request: Request) {
+  return handleAdminAction(request);
 }
-export function PATCH() {
-  return notImplemented("admin");
-}
-export function DELETE() {
-  return notImplemented("admin");
+
+export function DELETE(request: Request) {
+  return handleAdminAction(request);
 }

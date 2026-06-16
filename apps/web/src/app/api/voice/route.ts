@@ -1,19 +1,26 @@
-// §5.3 — 'voice' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { NextResponse } from "next/server";
+
+export const runtime = "nodejs";
 
 export function GET() {
-  return notImplemented("voice");
-}
-export function POST() {
-  return notImplemented("voice");
-}
-export function PUT() {
-  return notImplemented("voice");
-}
-export function PATCH() {
-  return notImplemented("voice");
-}
-export function DELETE() {
-  return notImplemented("voice");
+  return NextResponse.json(
+    {
+      routes: {
+        rooms: "/api/voice/rooms",
+        token: "/api/voice/token",
+        end: "/api/voice/end",
+      },
+      media: {
+        provider: "livekit",
+        serverSideMediaRelay: false,
+        tokenIssuer: "vercel-function",
+      },
+      defaults: {
+        recordingEnabled: false,
+        transcriptionEnabled: false,
+        participantConsentRequiredWhenRecorded: true,
+      },
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }

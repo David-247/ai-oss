@@ -1,19 +1,18 @@
-// §5.3 — 'cron' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { NextResponse } from "next/server";
+import { dispatchJobRequest, listJobs } from "@/lib/jobs";
+
+export const runtime = "nodejs";
 
 export function GET() {
-  return notImplemented("cron");
+  return NextResponse.json(
+    {
+      group: "cron",
+      jobs: listJobs().filter((job) => job.runtime === "cron"),
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
-export function POST() {
-  return notImplemented("cron");
-}
-export function PUT() {
-  return notImplemented("cron");
-}
-export function PATCH() {
-  return notImplemented("cron");
-}
-export function DELETE() {
-  return notImplemented("cron");
+
+export async function POST(request: Request) {
+  return dispatchJobRequest(request, "cron");
 }

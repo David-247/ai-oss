@@ -42,3 +42,13 @@ phases/
 .DS_Store
 Thumbs.db
 *.log
+# vibeless-managed
+.claude/settings.json
+# vibeless-managed
+.vibeless\hooks\
+# vibeless-managed
+.cursor/mcp.json
+# vibeless-managed
+.codex/config.toml
+# vibeless-managed
+.codex/hooks.json

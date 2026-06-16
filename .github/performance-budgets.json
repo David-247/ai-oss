@@ -1,0 +1,17 @@
+{
+  "budgets": {
+    "lcpMs": 2500,
+    "inpMs": 200,
+    "cls": 0.1,
+    "searchResponseMs": 500,
+    "chatPerceivedLatencyMs": 500,
+    "initialJsKb": 170
+  },
+  "targets": ["/", "/search", "/research", "/z", "/legal"],
+  "loadChecks": [
+    "/api/posts?limit=50",
+    "/api/search?q=research&type=paper&limit=20",
+    "/api/moderation/queue?limit=50",
+    "/api/chat/messages?limit=50"
+  ]
+}

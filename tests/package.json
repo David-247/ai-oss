@@ -5,10 +5,31 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test -c playwright.config.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
+  "dependencies": {
+    "@ai-oss/auth": "workspace:^",
+    "@ai-oss/admin": "workspace:^",
+    "@ai-oss/chat": "workspace:^",
+    "@ai-oss/compliance": "workspace:^",
+    "@ai-oss/design-system": "workspace:^",
+    "@ai-oss/discussions": "workspace:^",
+    "@ai-oss/donations": "workspace:^",
+    "@ai-oss/files": "workspace:^",
+    "@ai-oss/moderation": "workspace:^",
+    "@ai-oss/observability": "workspace:^",
+    "@ai-oss/performance": "workspace:^",
+    "@ai-oss/permissions": "workspace:*",
+    "@ai-oss/research": "workspace:^",
+    "@ai-oss/search": "workspace:^",
+    "@ai-oss/security": "workspace:^",
+    "@ai-oss/trust": "workspace:^",
+    "@ai-oss/voice": "workspace:^",
+    "@ai-oss/zones": "workspace:^"
+  },
   "devDependencies": {
+    "@playwright/test": "1.54.0",
     "@types/node": "22.19.21",
     "typescript": "5.7.2",
     "vitest": "3.2.6"

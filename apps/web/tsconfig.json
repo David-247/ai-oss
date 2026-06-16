@@ -1,11 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -21,22 +17,29 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@ai-oss/shared": [
-        "../../packages/shared/src/index.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@ai-oss/admin": ["../../packages/admin/src/index.ts"],
+      "@ai-oss/auth": ["../../packages/auth/src/index.ts"],
+      "@ai-oss/chat": ["../../packages/chat/src/index.ts"],
+      "@ai-oss/compliance": ["../../packages/compliance/src/index.ts"],
+      "@ai-oss/voice": ["../../packages/voice/src/index.ts"],
+      "@ai-oss/donations": ["../../packages/donations/src/index.ts"],
+      "@ai-oss/files": ["../../packages/files/src/index.ts"],
+      "@ai-oss/jobs": ["../../packages/jobs/src/index.ts"],
+      "@ai-oss/observability": ["../../packages/observability/src/index.ts"],
+      "@ai-oss/performance": ["../../packages/performance/src/index.ts"],
+      "@ai-oss/permissions": ["../../packages/permissions/src/index.ts"],
+      "@ai-oss/discussions": ["../../packages/discussions/src/index.ts"],
+      "@ai-oss/shared": ["../../packages/shared/src/index.ts"],
+      "@ai-oss/research": ["../../packages/research/src/index.ts"],
+      "@ai-oss/search": ["../../packages/search/src/index.ts"],
+      "@ai-oss/security": ["../../packages/security/src/index.ts"],
+      "@ai-oss/design-system": ["../../packages/design-system/src/index.ts"],
+      "@ai-oss/trust": ["../../packages/trust/src/index.ts"],
+      "@ai-oss/zones": ["../../packages/zones/src/index.ts"]
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

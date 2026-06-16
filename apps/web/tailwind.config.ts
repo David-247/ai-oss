@@ -4,9 +4,18 @@ import type { Config } from "tailwindcss";
 // Phase 05; this config is the budgeted foundation. Dark mode via class.
 const config: Config = {
   darkMode: "class",
-  content: ["./src/**/*.{ts,tsx,mdx}"],
+  content: ["./src/**/*.{ts,tsx,mdx}", "../../packages/design-system/src/**/*.{ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        canvas: "var(--color-canvas)",
+        panel: "var(--color-panel)",
+        accent: "var(--color-accent)",
+      },
+      borderRadius: {
+        shell: "8px",
+      },
+    },
   },
   plugins: [],
 };

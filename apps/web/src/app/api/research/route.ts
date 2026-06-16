@@ -1,19 +1,34 @@
-// §5.3 — 'research' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { NextResponse } from "next/server";
+import { getServiceClientOrProblem, problem } from "@/lib/auth-server";
 
-export function GET() {
-  return notImplemented("research");
-}
-export function POST() {
-  return notImplemented("research");
-}
-export function PUT() {
-  return notImplemented("research");
-}
-export function PATCH() {
-  return notImplemented("research");
-}
-export function DELETE() {
-  return notImplemented("research");
+export const runtime = "nodejs";
+
+export async function GET() {
+  const service = getServiceClientOrProblem();
+  if (!service.ok) {
+    return service.response;
+  }
+
+  const { data, error } = await service.client
+    .from("papers")
+    .select("id, identifier, title, abstract, categories, tags, status, safety_status, created_at")
+    .in("status", ["published", "withdrawn", "superseded", "retracted", "redacted"])
+    .is("deleted_at", null)
+    .order("created_at", { ascending: false })
+    .limit(25);
+  if (error !== null) {
+    return problem(400, "research-read-failed", error.message);
+  }
+
+  return NextResponse.json(
+    {
+      papers: data ?? [],
+      routes: {
+        papers: "/api/research/papers",
+        importArxivMetadata: "/api/research/import/arxiv-metadata-optional",
+      },
+      label: "Not peer reviewed / not platform endorsed",
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }

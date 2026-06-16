@@ -1,19 +1,32 @@
-// §5.3 — 'moderation' API surface. Scaffolded as a 501 stub; implemented in its owning
-// feature phase. Do not add business logic here without updating the phase plan.
-import { notImplemented } from "@/lib/http";
+import { NextResponse } from "next/server";
+import {
+  AUTOMOD_ACTION_TYPES,
+  AUTOMOD_CONDITION_KEYS,
+  MODERATION_RULE_LAYERS,
+  REPORT_REASONS,
+  REPORT_TARGET_TYPES,
+} from "@ai-oss/moderation";
+
+export const runtime = "nodejs";
 
 export function GET() {
-  return notImplemented("moderation");
-}
-export function POST() {
-  return notImplemented("moderation");
-}
-export function PUT() {
-  return notImplemented("moderation");
-}
-export function PATCH() {
-  return notImplemented("moderation");
-}
-export function DELETE() {
-  return notImplemented("moderation");
+  return NextResponse.json(
+    {
+      surface: "moderation",
+      routes: [
+        "/api/reports",
+        "/api/moderation/queue",
+        "/api/moderation/actions",
+        "/api/moderation/appeals",
+        "/api/moderation/automod/test",
+        "/api/moderation/automod/rules",
+      ],
+      ruleLayers: MODERATION_RULE_LAYERS,
+      conditionKeys: AUTOMOD_CONDITION_KEYS,
+      actionTypes: AUTOMOD_ACTION_TYPES,
+      reportTargets: REPORT_TARGET_TYPES,
+      reportReasons: REPORT_REASONS,
+    },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }

@@ -1,0 +1,54 @@
+{
+  "version": "phase-19",
+  "defaultMode": "log",
+  "rules": [
+    {
+      "key": "admin-step-up",
+      "paths": ["/admin", "/api/admin"],
+      "action": "challenge",
+      "signals": ["elevated_role", "missing_mfa_or_passkey", "stale_step_up"]
+    },
+    {
+      "key": "auth-abuse",
+      "paths": ["/api/auth"],
+      "action": "rate_limit",
+      "signals": ["login_or_signup_post", "ip_velocity", "bot_score"]
+    },
+    {
+      "key": "account-privacy",
+      "paths": ["/api/account/export", "/api/account/delete"],
+      "action": "challenge",
+      "signals": ["cookie_session", "missing_step_up"]
+    },
+    {
+      "key": "payment-webhook-allowlist",
+      "paths": ["/api/stripe/webhook"],
+      "action": "monitor",
+      "signals": ["stripe_signature_required", "no_browser_cookies"]
+    },
+    {
+      "key": "file-upload",
+      "paths": ["/api/files/upload-url", "/api/files/complete"],
+      "action": "rate_limit",
+      "signals": ["content_length", "mime_type", "bot_score"]
+    },
+    {
+      "key": "legal-intake",
+      "paths": ["/api/legal/dmca", "/api/legal/dsa", "/api/legal/online-safety"],
+      "action": "rate_limit",
+      "signals": ["requester_velocity", "target_velocity"]
+    },
+    {
+      "key": "governance-vote",
+      "paths": ["/api/zones/*/governance/actions", "/api/votes"],
+      "action": "challenge",
+      "signals": ["botid_required", "duplicate_device_cluster"]
+    },
+    {
+      "key": "research-submit",
+      "paths": ["/api/research/papers"],
+      "action": "rate_limit",
+      "signals": ["account_age", "file_hash_reuse", "external_link_ssrf"]
+    }
+  ]
+}
