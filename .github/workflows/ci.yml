@@ -20,7 +20,7 @@ jobs:
     name: lint / typecheck / test / build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -41,7 +41,7 @@ jobs:
     name: performance budgets
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -56,7 +56,7 @@ jobs:
     name: unit / integration / security / compliance / rls
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -71,7 +71,7 @@ jobs:
     name: e2e desktop / mobile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -88,7 +88,7 @@ jobs:
     name: secret-scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Gitleaks
@@ -103,7 +103,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Semgrep
         uses: returntocorp/semgrep-action@v1
         with:
@@ -113,7 +113,7 @@ jobs:
     name: license-scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -136,7 +136,7 @@ jobs:
       - sast
       - license-scan
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
