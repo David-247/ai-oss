@@ -32,7 +32,7 @@
     "@ai-oss/shared": "workspace:*",
     "@ai-oss/trust": "workspace:^",
     "@ai-oss/zones": "workspace:^",
-    "lucide-react": "^1.17.0",
+    "lucide-react": "^1.27.0",
     "next": "15.5.19",
     "react": "19.2.7",
     "react-dom": "19.2.7"
